@@ -1,46 +1,38 @@
 import React from 'react';
-import './App.css'
-// don't change the Component name "App"
+import { BrowserRouter as Router, Route, Link, Routes } from 'react-router-dom';
+import './App.css';
+
+import Home from './pages/Home';
+import ExerciseShowcase from './pages/ExerciseShowcase';
+import ExercisePage from './pages/ExercisePage';
+import NotFound from './pages/NotFound';
+
+const exercises = [
+  { id: 16, title: 'Exercise 16', description: 'Feedback Form', component: 'FeedbackForm' },
+  { id: 22, title: 'Exercise 22', description: 'Workout Timer', component: 'WorkoutTimer' },
+];
+
 function App() {
-   const [textareaV, setTextareaV] = React.useState('');
-    const [textinput, setTextinput] = React.useState('');
-
-    return (
-        <>
-            <section id="feedback">
-                <h2>Please share some feedback</h2>
-                <p>
-                    <label>Your Feedback</label>
-                    <textarea onChange={(e) => setTextareaV(e.target.value)} />
-                </p>
-                <p>
-                    <label>Your Name</label>
-                    <input type="text" onChange={(e) => setTextinput(e.target.value)} />
-                </p>
-            </section>
-            <section id="draft">
-                <h2>Your feedback</h2>
-
-                <Review feedback={textareaV} student={textinput} />
-
-                <p>
-                    <button>Save</button>
-                </p>
-            </section>
-        </>
-    );
-}
-
-function Review({ feedback, student }) {
   return (
-    <figure>
-      <blockquote>
-        <p>{feedback}</p>
-      </blockquote>
-      <figcaption>{student}</figcaption>
-    </figure>
+    <Router>
+      <div className="app">
+        <header>
+          <h1>Exercise Showcase</h1>
+          <nav>
+            <Link to="/">Home</Link>
+            <Link to="/exercises">Exercises</Link>
+          </nav>
+        </header>
+
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/exercises" element={<ExerciseShowcase exercises={exercises} />} />
+          <Route path="/exercise/:id" element={<ExercisePage exercises={exercises} />} />
+          <Route path="*" element={<NotFound />} />
+        </Routes>
+      </div>
+    </Router>
   );
 }
-
 
 export default App;
