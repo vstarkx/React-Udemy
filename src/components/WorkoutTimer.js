@@ -1,5 +1,5 @@
 import React from 'react';
-
+import './index.css'
 
 
 function Workout({ title, description, time, onComplete }) {
