@@ -8,6 +8,7 @@ import { App as ForwardingRef } from './components/ForwardingRef';
 import { App as ExposeCompRef } from './components/ExposeCompRef';
 import WorkingWithPortal from './components/WorkingWithPortal';
 import Project from './components/project/App.jsx';
+import ProjectC9 from './components/projectC9/page.jsx';
 
 export default function App() {
   const [activeExercise, setActiveExercise] = useState(null)
@@ -20,6 +21,7 @@ export default function App() {
         { id: 24, title: 'ExposeComp Ref', component: <ExposeCompRef />, code: ExposeCompRefCode },
         { id: 25, title: 'Working with portal', component: <WorkingWithPortal />, code: WorkingWithPortalCode },
         { id: 'Project', title: 'ModalRef', component:<Project /> , code: '' },
+        { id: 'Project Chapter 9', title: 'Tasks', component:<ProjectC9 /> , code: '' },
 
     // Add more exercises here
   ]
